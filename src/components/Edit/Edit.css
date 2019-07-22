@@ -1,0 +1,7 @@
+.editComponent {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    padding: 2%;
+}

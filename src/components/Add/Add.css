@@ -1,0 +1,17 @@
+.addComponent {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    padding: 2%;
+}
+
+.addComponent input {
+    text-align: center;
+}
+
+.addComponent button {
+    margin: auto;
+    margin-top: 2%;
+    width: 57%;
+}
