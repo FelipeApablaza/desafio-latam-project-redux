@@ -9,6 +9,7 @@ const defaultState = {
     gender: '',
     powers: '',
     comic: '',
+    hide: false,
 }
 const Add = props => {
 

@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { deleteHeroAction, editHeroAction } from '../../store/list/actions'
+import { deleteHeroAction, editHeroAction, editTurnAction} from '../../store/list/actions'
 import Edit from '../Edit/Edit'
+import Filter from '../Filter/Filter'
 import './List.css'
 
 
 const List = props => {
-  const [state, setState] = useState({ edit: false })
 
-  const { superHeroesList } = props;
+  const { superHeroesList, editOn } = props;
 
   const handlerEdit = ({ target: { value } }) => {
-    props.editHero(superHeroesList[value])
-    setState({ edit: true })
+    props.editHero({ hero: superHeroesList[parseInt(value)], index: parseInt(value)})
+    props.editTurn(true)
   }
 
   const handlerDelete = ({ target: { value } }) => {
     props.deleteHero(parseInt(value))
-    setState({ edit: false })
+    props.editTurn(false)
   }
 
   return (
@@ -25,6 +25,7 @@ const List = props => {
       <div className='listComponent'>
         <table>
           <thead>
+            <Filter/>
             <tr>
               <th>SuperHero</th>
               <th>Real Name</th>
@@ -37,7 +38,9 @@ const List = props => {
           </thead>
           <tbody>
             {
-              superHeroesList.map((item, index) =>
+              superHeroesList.map((item, index) => {
+                if (!item.hide) {
+                  return (
                 <tr key={index}>
                   <td>{item.supername}</td>
                   <td>{item.realname}</td>
@@ -46,18 +49,20 @@ const List = props => {
                   <td>{item.comic}</td>
                   <td><button value={index} onClick={handlerEdit}>Edit</button></td>
                   <td><button value={index} onClick={handlerDelete}>Delete</button></td>
-                </tr>
+                </tr> )
+                } else return (<div></div>)
+              } 
               )
             }
           </tbody>
           <tfoot>
-            
+
           </tfoot>
         </table>
       </div>
       <div>
-        {state.edit ?
-          (<Edit/>) :
+        {editOn ?
+          (<Edit />) :
           (<div></div>)
         }
       </div>
@@ -71,7 +76,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteHero: payload => dispatch(deleteHeroAction(payload)),
-  editHero: payload => dispatch(editHeroAction(payload))
+  editHero: payload => dispatch(editHeroAction(payload)),
+  editTurn: payload => dispatch(editTurnAction(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

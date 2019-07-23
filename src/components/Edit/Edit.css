@@ -5,3 +5,13 @@
     width: 15%;
     padding: 2%;
 }
+
+.editComponent input {
+    text-align: center;
+}
+
+.editComponent button {
+    margin: auto;
+    margin-top: 2%;
+    width: 65%;
+}

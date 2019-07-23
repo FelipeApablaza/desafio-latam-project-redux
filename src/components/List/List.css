@@ -1,6 +1,10 @@
 .listComponent table {
-    margin: auto;
-    padding: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
     text-align: center;
+}
+
+.listComponent td {
+    width: 5%
 }
 

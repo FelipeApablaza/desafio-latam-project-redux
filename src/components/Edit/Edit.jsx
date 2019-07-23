@@ -1,40 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { updateHeroAction } from '../../store/list/actions'
 import './Edit.css'
 
-
-
 const Edit = props => {
-    const [hero, setHero] = useState(props.editHero)
+    const { heroToEdit: { hero, index } } = props
 
-    // useEffect(() => {
-    //     setHero(props.editHero)
-    // }, [])
+    const [editedHero, setEditedHero] = useState(hero)
 
-    const handlerOnChange = ({target: {value, name}}) => {
-        setHero({ ...hero, [name]: value})
+    useEffect(() => {
+        setEditedHero(hero)
+    }, [hero])
+
+    const handlerOnChange = ({ target: { value, name } }) => {
+        setEditedHero({ ...editedHero, [name]: value })
     }
 
-    const handlerAdd = () => {
-        console.log(props)
+    const handlerUpdate = () => {
+        props.updateHero({ hero: editedHero, index})
     }
 
     return (
         <div className='editComponent'>
-            <input value={hero.supername} onChange={handlerOnChange} name='supername' placeholder={'SuperHero Name'}></input>
-            <input value={hero.realname} onChange={handlerOnChange} name='realname' placeholder={'Real Name'}></input>
-            <input value={hero.gender} onChange={handlerOnChange} name='gender' placeholder={'Gender'}></input>
-            <input value={hero.powers} onChange={handlerOnChange} name='powers' placeholder={'Powers'}></input>
-            <input value={hero.comic} onChange={handlerOnChange} name='comic' placeholder={'Comic'}></input>
-            <button onClick={handlerAdd}>Add a SuperHero!</button>
+            <input value={editedHero.supername} onChange={handlerOnChange} name='supername' placeholder={'SuperHero Name'}></input>
+            <input value={editedHero.realname} onChange={handlerOnChange} name='realname' placeholder={'Real Name'}></input>
+            <input value={editedHero.gender} onChange={handlerOnChange} name='gender' placeholder={'Gender'}></input>
+            <input value={editedHero.powers} onChange={handlerOnChange} name='powers' placeholder={'Powers'}></input>
+            <input value={editedHero.comic} onChange={handlerOnChange} name='comic' placeholder={'Comic'}></input>
+            <button onClick={handlerUpdate}>Update SuperHero!</button>
         </div>
     )
 }
 
 const mapStateToProps = state => ({
     ...state.superHeroes,
-  });
-  
+});
 
-export default connect(mapStateToProps, null)(Edit)
+const mapDispatchToProps = dispatch => ({
+    updateHero: payload => dispatch(updateHeroAction(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Edit)
 
