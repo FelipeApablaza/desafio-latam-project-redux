@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { editTurnAction, filterListAction } from '../../store/list/actions'
+import { editTurnAction, filterListAction, cleanFilterAction } from '../../store/list/actions'
 import './Filter.css'
 
 const defaultState = {
@@ -17,14 +17,13 @@ const Filter = props => {
     const handlerOnChange = ({ target: { value, name } }) => {
         props.editTurn(false)
         setState({ ...state, [name]: value })
-        console.log('asdasd')
 
-        let atts = [ 'supername', 'realname', 'gender', 'powers', 'comic']
+        let atts = ['supername', 'realname', 'gender', 'powers', 'comic']
         atts = atts.filter((item) => item !== name)
 
         let filteredList = superHeroesList.map((item) => {
-            if ( atts.map((elem)=> item[elem].includes(state[elem])).every((bool)=>bool === true)
-                && item[name].includes(value)) {
+            if (atts.map((elem) => (item[elem].search(new RegExp(state[elem],'i')))>=0).every((bool) => bool === true)
+                && (item[name].search(new RegExp(value,'i'))>=0)) {
                 item.hide = false
                 return item
             } else {
@@ -32,7 +31,14 @@ const Filter = props => {
                 return item
             }
         })
+        // props.filterList(state)
         props.filterList(filteredList)
+    }
+
+    const handlerOnClick = () => {
+        props.editTurn(false)
+        setState(defaultState)
+        props.cleanFilter()
     }
 
     return (
@@ -42,6 +48,7 @@ const Filter = props => {
             <th><input value={state.gender} onChange={handlerOnChange} name='gender' placeholder={'Filter by Gender'}></input></th>
             <th><input value={state.powers} onChange={handlerOnChange} name='powers' placeholder={'Filter by Powers'}></input></th>
             <th><input value={state.comic} onChange={handlerOnChange} name='comic' placeholder={'Filter by Comic'}></input></th>
+            <th><button onClick={handlerOnClick}>Clean Filter</button></th>
         </tr>
     )
 }
@@ -52,7 +59,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     editTurn: payload => dispatch(editTurnAction(payload)),
-    filterList: payload => dispatch(filterListAction(payload))
+    filterList: payload => dispatch(filterListAction(payload)),
+    cleanFilter: payload =>dispatch(cleanFilterAction(payload))
 });
 
 

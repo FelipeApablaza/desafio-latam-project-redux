@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteHeroAction, editHeroAction, editTurnAction} from '../../store/list/actions'
+import { deleteHeroAction, editHeroAction, editTurnAction } from '../../store/list/actions'
 import Edit from '../Edit/Edit'
 import Filter from '../Filter/Filter'
 import './List.css'
@@ -11,7 +11,7 @@ const List = props => {
   const { superHeroesList, editOn } = props;
 
   const handlerEdit = ({ target: { value } }) => {
-    props.editHero({ hero: superHeroesList[parseInt(value)], index: parseInt(value)})
+    props.editHero({ hero: superHeroesList[parseInt(value)], index: parseInt(value) })
     props.editTurn(true)
   }
 
@@ -25,7 +25,7 @@ const List = props => {
       <div className='listComponent'>
         <table>
           <thead>
-            <Filter/>
+            <Filter />
             <tr>
               <th>SuperHero</th>
               <th>Real Name</th>
@@ -38,18 +38,22 @@ const List = props => {
           </thead>
           <tbody>
             {
-              superHeroesList.filter((item)=> !item.hide).map((item, index) => {
+              superHeroesList.map((item, index) => {
+                if (!item.hide) {
                   return (
-                <tr key={index}>
-                  <td>{item.supername}</td>
-                  <td>{item.realname}</td>
-                  <td>{item.gender}</td>
-                  <td>{item.powers}</td>
-                  <td>{item.comic}</td>
-                  <td><button value={index} onClick={handlerEdit}>Edit</button></td>
-                  <td><button value={index} onClick={handlerDelete}>Delete</button></td>
-                </tr> )
-              } 
+                    <tr key={index}>
+                      <td>{item.supername}</td>
+                      <td>{item.realname}</td>
+                      <td>{item.gender}</td>
+                      <td>{item.powers}</td>
+                      <td>{item.comic}</td>
+                      <td><button value={index} onClick={handlerEdit}>Edit</button></td>
+                      <td><button value={index} onClick={handlerDelete}>Delete</button></td>
+                    </tr>)
+                } else {
+                  return ([])
+                }
+              }
               )
             }
           </tbody>
@@ -58,12 +62,10 @@ const List = props => {
           </tfoot>
         </table>
       </div>
-      <div>
         {editOn ?
           (<Edit />) :
-          (<div></div>)
+          ([])
         }
-      </div>
     </div >
   );
 };
