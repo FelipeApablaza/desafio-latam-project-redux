@@ -38,8 +38,7 @@ const List = props => {
           </thead>
           <tbody>
             {
-              superHeroesList.map((item, index) => {
-                if (!item.hide) {
+              superHeroesList.filter((item)=> !item.hide).map((item, index) => {
                   return (
                 <tr key={index}>
                   <td>{item.supername}</td>
@@ -50,7 +49,6 @@ const List = props => {
                   <td><button value={index} onClick={handlerEdit}>Edit</button></td>
                   <td><button value={index} onClick={handlerDelete}>Delete</button></td>
                 </tr> )
-                } else return (<div></div>)
               } 
               )
             }

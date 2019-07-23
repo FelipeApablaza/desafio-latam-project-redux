@@ -1,5 +1,5 @@
 import { initialState } from "./initialState";
-import { ADD_HERO, DELETE_HERO, UPDATE_HERO, EDIT_HERO, EDIT_TURN } from "./const";
+import { ADD_HERO, DELETE_HERO, UPDATE_HERO, EDIT_HERO, EDIT_TURN, FILTER_LIST } from "./const";
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -37,6 +37,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         editOn: action.payload
+      }
+    }
+    case FILTER_LIST: {
+      return {
+        ...state,
+        superHeroesList: action.payload
       }
     }
     default: {

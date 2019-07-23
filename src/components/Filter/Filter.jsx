@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { editTurnAction, filterListAction } from '../../store/list/actions'
 import './Filter.css'
 
 const defaultState = {
@@ -10,11 +11,28 @@ const defaultState = {
     comic: '',
 }
 const Filter = props => {
-
+    const { superHeroesList } = props
     const [state, setState] = useState(defaultState)
 
     const handlerOnChange = ({ target: { value, name } }) => {
+        props.editTurn(false)
         setState({ ...state, [name]: value })
+        console.log('asdasd')
+
+        let atts = [ 'supername', 'realname', 'gender', 'powers', 'comic']
+        atts = atts.filter((item) => item !== name)
+
+        let filteredList = superHeroesList.map((item) => {
+            if ( atts.map((elem)=> item[elem].includes(state[elem])).every((bool)=>bool === true)
+                && item[name].includes(value)) {
+                item.hide = false
+                return item
+            } else {
+                item.hide = true
+                return item
+            }
+        })
+        props.filterList(filteredList)
     }
 
     return (
@@ -28,5 +46,14 @@ const Filter = props => {
     )
 }
 
+const mapStateToProps = state => ({
+    ...state.superHeroes,
+});
 
-export default connect(null, null)(Filter)
+const mapDispatchToProps = dispatch => ({
+    editTurn: payload => dispatch(editTurnAction(payload)),
+    filterList: payload => dispatch(filterListAction(payload))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter)

@@ -1,4 +1,4 @@
-import { ADD_HERO, DELETE_HERO, UPDATE_HERO, EDIT_HERO, EDIT_TURN } from "./const";
+import { ADD_HERO, DELETE_HERO, UPDATE_HERO, EDIT_HERO, EDIT_TURN, FILTER_LIST } from "./const";
 
 export const addHeroAction = newHero =>
   dispatch => dispatch({ type: ADD_HERO, payload: newHero });
@@ -15,3 +15,5 @@ export const editHeroAction = hero =>
 export const editTurnAction = bool =>
   dispatch => dispatch({ type: EDIT_TURN, payload: bool })
 
+export const filterListAction = list => 
+  dispatch => dispatch({ type: FILTER_LIST, payload: list })
