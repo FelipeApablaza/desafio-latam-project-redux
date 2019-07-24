@@ -23,7 +23,7 @@ const List = props => {
   return (
     <div>
       <div className='listComponent'>
-        <table>
+        <table className='hover'>
           <thead>
             <Filter />
             <tr>

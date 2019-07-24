@@ -41,11 +41,11 @@ const Add = props => {
 
     return (
         <div className='addComponent'>
-            <input value={newHero.supername} onChange={handlerOnChange} name='supername' placeholder={'SuperHero Name (Max 20 characters)'} maxlength="20"></input>
-            <input value={newHero.realname} onChange={handlerOnChange} name='realname' placeholder={'Real Name (Max 20 characters)'} maxlength="20"></input>
-            <input value={newHero.gender} onChange={handlerOnChange} name='gender' placeholder={'Gender (Max 20 characters)'} maxlength="20"></input>
-            <input value={newHero.powers} onChange={handlerOnChange} name='powers' placeholder={'Powers (Max 20 characters)'} maxlength="20"></input>
-            <input value={newHero.comic} onChange={handlerOnChange} name='comic' placeholder={'Comic (Max 20 characters)'} maxlength="20"></input>
+            <input value={newHero.supername} onChange={handlerOnChange} name='supername' placeholder={'SuperHero Name (20 characters max.)'} maxLength="20"></input>
+            <input value={newHero.realname} onChange={handlerOnChange} name='realname' placeholder={'Real Name (20 characters max.)'} maxLength="20"></input>
+            <input value={newHero.gender} onChange={handlerOnChange} name='gender' placeholder={'Gender (20 characters max.)'} maxLength="20"></input>
+            <input value={newHero.powers} onChange={handlerOnChange} name='powers' placeholder={'Powers (20 characters max.)'} maxLength="20"></input>
+            <input value={newHero.comic} onChange={handlerOnChange} name='comic' placeholder={'Comic (20 characters max.)'} maxLength="20"></input>
             <button disabled={disabled} onClick={handlerAdd}>Add a SuperHero!</button>
         </div>
     )

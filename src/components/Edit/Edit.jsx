@@ -38,11 +38,11 @@ const Edit = props => {
 
     return (
         <div className='editComponent'>
-            <input value={editedHero.supername} onChange={handlerOnChange} name='supername' placeholder={'SuperHero Name'} maxlength="20"></input>
-            <input value={editedHero.realname} onChange={handlerOnChange} name='realname' placeholder={'Real Name'} maxlength="20"></input>
-            <input value={editedHero.gender} onChange={handlerOnChange} name='gender' placeholder={'Gender'} maxlength="20"></input>
-            <input value={editedHero.powers} onChange={handlerOnChange} name='powers' placeholder={'Powers'} maxlength="20"></input>
-            <input value={editedHero.comic} onChange={handlerOnChange} name='comic' placeholder={'Comic'} maxlength="20"></input>
+            <input value={editedHero.supername} onChange={handlerOnChange} name='supername' placeholder={'SuperHero Name'} maxLength="20"></input>
+            <input value={editedHero.realname} onChange={handlerOnChange} name='realname' placeholder={'Real Name'} maxLength="20"></input>
+            <input value={editedHero.gender} onChange={handlerOnChange} name='gender' placeholder={'Gender'} maxLength="20"></input>
+            <input value={editedHero.powers} onChange={handlerOnChange} name='powers' placeholder={'Powers'} maxLength="20"></input>
+            <input value={editedHero.comic} onChange={handlerOnChange} name='comic' placeholder={'Comic'} maxLength="20"></input>
             <button disabled={disabled} onClick={handlerUpdate}>Update SuperHero!</button>
         </div>
     )

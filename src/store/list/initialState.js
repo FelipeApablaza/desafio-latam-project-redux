@@ -4,7 +4,10 @@ const defaultList =
     { supername: 'Spiderman', realname: 'Peter Parker', gender: 'Male', powers: 'Spider Sense', comic: 'Spiderman', hide: false },
     { supername: 'Scarlet Witch', realname: 'Wanda Maximoff', gender: 'Female', powers: 'Mind Control', comic: 'Avengers', hide: false },
     { supername: 'Hulk', realname: 'Bruce Banner', gender: 'Male', powers: 'Superhuman Strength', comic: 'The Incredible Hulk', hide: false },
-    { supername: 'Storm', realname: 'Ororo Monroe', gender: 'Female', powers: 'Weather Control', comic: 'X-Men', hide: false }
+    { supername: 'Storm', realname: 'Ororo Monroe', gender: 'Female', powers: 'Weather Control', comic: 'X-Men', hide: false },
+    { supername: 'Doctor Strange', realname: 'Stephen Strange', gender: 'Male', powers: 'Mystical Powers', comic: 'Doctor Strange', hide: false},
+    { supername: 'Invisible Woman', realname: 'Susan Storm-Richards', gender: 'Female', powers: 'Force Field', comic: 'Fantastic 4', hide: false},
+    { supername: 'Captain Marvel', realname: 'Carol Danvers', gender: 'Female', powers: 'Fligth & Strength', comic: 'Captain Marvel', hide: false},
   ]
 
 
