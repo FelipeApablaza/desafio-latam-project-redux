@@ -2,16 +2,15 @@ import React from 'react';
 import SuperHeroes from './views/SuperHeroes';
 import { Provider } from 'react-redux';
 import store from './store/store';
-
-
+import './App.css'
 
 function App() {
   return (
-    <Provider store={store}>
-      <div>
+    <div>
+      <Provider store={store}>
         <SuperHeroes />
-      </div>
-    </Provider>
+      </Provider>
+    </div>
   );
 }
 

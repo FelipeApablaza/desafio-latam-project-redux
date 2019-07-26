@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { updateHeroAction, editTurnAction } from '../../store/list/actions'
-import './Edit.css'
+// import './Edit.css'
 
 const Edit = props => {
     const { heroToEdit: { hero, index } } = props

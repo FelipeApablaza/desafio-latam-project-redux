@@ -1,0 +1,88 @@
+.superHeroes {
+    margin: 5% 10%;
+}
+
+.addComponent input, .editComponent input{
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+    font-family: fantasy;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgb(228, 228, 228)
+}
+
+.filterComponent input {
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: rgb(228, 228, 228);
+    font-family: fantasy;
+}
+
+.addComponent input::placeholder {
+    text-align: right;
+}
+
+.addComponent button, .editComponent button{
+    display: block;
+    margin: 1% auto;
+    font-family: fantasy;
+    border-radius: 40px;
+    border: none;
+    box-shadow: 0 2px #999;
+}
+
+.addComponent button:hover, .editComponent button:hover {
+    background-color: #abe981;
+}
+
+.addComponent button:active, .editComponent button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px #666;
+}
+
+.heroesList table {
+    padding: 1% 1%;
+    margin: 1% auto;
+    text-align: center;
+    font-family: fantasy;
+}
+
+.heroesList table button {
+    font-family: fantasy;
+    border-radius: 40px;
+    border: none;
+    padding: 3px 1px 3px 3px;
+    box-shadow: 0 2px #999;
+}
+
+.heroesList .deleteButton:hover {
+    background-color: #ec8c8c;
+}
+
+.heroesList .editButton:hover {
+    background-color: #faec6f
+}
+
+.heroesList .editButton:active, .heroesList .deleteButton:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px #666;
+}
+
+.filterComponent button:hover {
+    background-color: #bf8ec5;
+}
+
+.filterComponent button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px #666;
+}
+
+.heroesList tr:hover td{
+    background-color: #c4aecc;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; 
+}

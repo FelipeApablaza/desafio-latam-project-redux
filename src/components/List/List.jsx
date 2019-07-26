@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { deleteHeroAction, editHeroAction, editTurnAction } from '../../store/list/actions'
 import Edit from '../Edit/Edit'
 import Filter from '../Filter/Filter'
-import './List.css'
+import Add from '../Add/Add'
+
+
 
 
 const List = props => {
@@ -22,8 +24,9 @@ const List = props => {
 
   return (
     <div>
-      <div className='listComponent'>
-        <table className='hover'>
+      <Add />
+      <div className='heroesList'>
+        <table>
           <thead>
             <Filter />
             <tr>
@@ -47,8 +50,8 @@ const List = props => {
                       <td>{item.gender}</td>
                       <td>{item.powers}</td>
                       <td>{item.comic}</td>
-                      <td><button value={index} onClick={handlerEdit}>Edit</button></td>
-                      <td><button value={index} onClick={handlerDelete}>Delete</button></td>
+                      <td><button className='editButton' value={index} onClick={handlerEdit}>Edit</button></td>
+                      <td><button className='deleteButton' value={index} onClick={handlerDelete}>Delete</button></td>
                     </tr>)
                 } else {
                   return ([])
@@ -62,11 +65,11 @@ const List = props => {
           </tfoot>
         </table>
       </div>
-        {editOn ?
-          (<Edit />) :
-          ([])
-        }
-    </div >
+      {editOn ?
+        (<Edit />) :
+        ([])
+      }
+    </div>
   );
 };
 

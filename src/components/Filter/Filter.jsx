@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { editTurnAction, filterListAction, cleanFilterAction } from '../../store/list/actions'
-import './Filter.css'
+// import './Filter.css'
 
 const defaultState = {
     supername: '',
